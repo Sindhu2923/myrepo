@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+</head>
+<body >
+    
+    <h2 align="center" > <FONT NAME=“IMPACT” SIZE=“6”   COLOR=“BROWN”>BMI CALCULATOR
+    </FONT></h2><Br>
+ 
+    <table  border ="5"  bgcolor="#2ffffe" align="center" cellpadding ="10" cellspacing="10">
+        <tr>
+            <td align="right"><label>Enter your weight:</label></td>
+            <td><input type="text" id="weight"></td>
+            <td><input type="radio" name="weight" id="kg" checked>kg</td>
+            <td><input type="radio" name="weight" id="lbs">lbs</td>
+        </tr>
+        <tr>
+            <td align="right"><label>Enter your height:</label></td>
+            <td><input type="text" id="height"></td>
+            <td><input type="radio" name="height" id="cm" checked>cm</td>
+            <td><input type="radio" name="height" id="inches">inches</td>
+        </tr>
+        <tr>
+            <td align="right"><label>Your BMI is:</label></td>
+            <td id="BMI"></td>
+        </tr>
+        <tr>
+            <td align="right"><label>Inference:</label></td>
+            <td id="inference"></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                <button onclick="bmicalc()">Calculate</button>
+                
+            </td>
+            
+        </tr>
+        
+    </table>
+    <script>
+        function bmicalc(){
+            var weight=document.getElementById("weight").value
+            var height=document.getElementById("height").value
+            var kg=document.getElementById("lbs")
+            if(kg.checked==true)
+            {
+                weight/=2.205
+            }
+            var cm=document.getElementById("inches")
+            if(cm.checked==true)
+            {
+                height*=2.54
+            }
+            height/=100
+            var res=weight/(height*height)
+            document.getElementById("BMI").innerHTML=res
+            if(res<18.5)
+            {
+                document.getElementById("inference").innerHTML="Underweight"
+            }
+            else if(res>=18.5&&res<24.9)
+            {
+                document.getElementById("inference").innerHTML="Normal"
+            }
+            else if(res>=25&&res<29.9)
+            {
+                document.getElementById("inference").innerHTML="Overweight"
+            }
+            else if(res>=30&&res<39.9)
+            {
+                document.getElementById("inference").innerHTML="Obese"
+            }
+            else if(res>=40)
+            {
+                document.getElementById("inference").innerHTML="You should be dead"
+            }
+        }
+    </script>
+</body>
+</html>
